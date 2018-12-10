@@ -10,9 +10,13 @@ class Arguments {
 		return this._arg[this._i];
 	}
 
+	next() {
+		this._i += 1;
+	}
+
 	is(key) {
 		if (this.get() === key) {
-			this._i += 1;
+			this.next();
 			return true;
 		}
 		return false;
