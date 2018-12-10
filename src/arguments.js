@@ -6,8 +6,12 @@ class Arguments {
 		this._i = 0;
 	}
 
+	get() {
+		return this._arg[this._i];
+	}
+
 	is(key) {
-		if (this._arg[this._i] === key) {
+		if (this.get() === key) {
 			this._i += 1;
 			return true;
 		}
