@@ -12,6 +12,7 @@ class Arguments {
 
 	next() {
 		this._i += 1;
+		return this;
 	}
 
 	is(key) {
