@@ -1,5 +1,6 @@
 
-const Parser = require('./src/parser.js');
+const Parser = require('./src/parser.js'),
+	Map = require('./src/map.js');
 
 class Cli {
 
@@ -7,7 +8,9 @@ class Cli {
 		let [, , ...args] = arg;
 		this._arg = args;
 		this._parser = new Parser(this._arg);
-		this._parser.setMap(map).parse();
+		this._parser
+			.setMap(map)
+			.parse();
 		this._cwd = process.cwd();
 	}
 
@@ -41,4 +44,4 @@ class Cli {
 
 }
 
-module.exports = Cli;
+module.exports = {Cli: Cli, Map: Map};

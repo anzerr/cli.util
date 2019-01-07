@@ -1,10 +1,15 @@
 
-const Cli = require('./index.js');
+const {Cli, Map} = require('./index.js');
 
-let cli = new Cli(process.argv, {
-		help: ['h', 'H'],
-		port: 'p'
-	}), arg = null;
+let cli = new Cli(process.argv, [
+		new Map('help')
+			.alias(['h', 'H'])
+			.noArgument(),
+		new Map('port')
+			.alias(['p', 'P'])
+	]), arg = null;
+
+console.log(cli);
 
 arg = cli.argument();
 if (arg.is('print')) {
