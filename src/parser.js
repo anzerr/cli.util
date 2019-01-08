@@ -71,7 +71,7 @@ class Cli {
 
 	parse() {
 		let i = 0, arg = this._arg, length = arg.length;
-		while (i < length && (this._max === null || this._format.argument.length < this._max)) {
+		while (i < length && (!this._max || this._format.argument.length < this._max)) {
 			if (this.isOption(arg[i])) {
 				i += this.parseOption(i);
 			} else {
