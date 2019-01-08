@@ -9,12 +9,16 @@ npm install --save git+ssh://git@github.com/anzerr/cli.util.git
 
 ### `Example`
 ``` javascript
-const Cli = require('cli.util');
+const {Cli, Map} = require('cli.util');
 
-let cli = new Cli(process.argv, {
-		help: ['h', 'H'],
-		port: 'p'
-	});
+let cli = new Cli(process.argv, [
+		new Map('help')
+			.alias(['h', 'H']),
+		new Map('port')
+			.alias(['p', 'P'])
+			.argument()
+	], 1);
+
 
 if (cli.argument().is('server')) {
 	console.log('start on port', cli.get('port') || 80);

@@ -6,6 +6,10 @@ class Arguments {
 		this._i = 0;
 	}
 
+	all() {
+		return this._arg;
+	}
+
 	get() {
 		return this._arg[this._i];
 	}
