@@ -4,14 +4,19 @@ const Parser = require('./src/parser.js'),
 
 class Cli {
 
-	constructor(arg, map) {
+	constructor(arg = [], map = [], max = null) {
 		let [, , ...args] = arg;
 		this._arg = args;
 		this._parser = new Parser(this._arg);
 		this._parser
 			.setMap(map)
-			.parse();
+			.setMax(max);
+		this._end = this._parser.parse();
 		this._cwd = process.cwd();
+	}
+
+	end() {
+		return this._end;
 	}
 
 	cwd() {

@@ -1,6 +1,6 @@
 
 const Arguments = require('./arguments.js'),
-	Map = require('./src/map.js');
+	Map = require('./map.js');
 
 class Cli {
 
@@ -13,11 +13,12 @@ class Cli {
 			options: [],
 			argument: []
 		};
+		this._max = null;
 		this._map = {};
 		this._argument = {};
 	}
 
-	_getMap(a) {
+	getMap(a) {
 		let out = [];
 		if (Array.isArray(a)) {
 			for (let i in a) {
@@ -29,63 +30,68 @@ class Cli {
 		return out;
 	}
 
-	_getKey(i) {
+	getKey(i) {
 		let arg = this._arg[i];
 		if (arg.length === 2) {
-			return this._getMap(arg[1])[0];
+			return this.getMap(arg[1])[0];
 		}
-		return (arg[1] === '-') ? this._getMap(arg.substr(2)) : this._getMap((arg.substr(1)).split(''));
+		return (arg[1] === '-') ? this.getMap(arg.substr(2)) : this.getMap((arg.substr(1)).split(''));
 	}
 
-	_isOption(str) {
+	isOption(str) {
 		return str[0] === '-';
 	}
 
-	_addOption(a, b) {
+	addOption(a, b) {
 		this._format.options.push({option: a, argument: b});
 		return this;
 	}
 
-	_isArg(i, key) {
+	isArg(i, key) {
 		let ni = (i + 1);
-		return (!this._argument[key] && ni < this._arg.length && !this._isOption(this._arg[ni]));
+		return (!this._argument[key] && ni < this._arg.length && !this.isOption(this._arg[ni]));
 	}
 
-	_parseOption(i) {
-		let arg = this._arg, key = this._getKey(i);
-		let ni = (i + 1), isArg = this._isArg(i, key) ? arg[ni] : null;
+	parseOption(i) {
+		let arg = this._arg, key = this.getKey(i);
+		let ni = (i + 1), isArg = this.isArg(i, key) ? arg[ni] : null;
 		if (arg[i].length === 2) {
-			this._addOption(key, isArg);
+			this.addOption(key, isArg);
 			return isArg ? 1 : 0;
 		}
 		if (key.length === 1) {
-			this._addOption(key[0], isArg);
+			this.addOption(key[0], isArg);
 			return isArg ? 1 : 0;
 		}
 		for (let x in key) {
-			this._addOption(key[x], null);
+			this.addOption(key[x], null);
 		}
 		return 0;
 	}
 
 	parse() {
 		let i = 0, arg = this._arg, length = arg.length;
-		while (i < length) {
-			if (this._isOption(arg[i])) {
-				i += this._parseOption(i);
+		while (i < length && (this._max === null || this._format.argument.length < this._max)) {
+			if (this.isOption(arg[i])) {
+				i += this.parseOption(i);
 			} else {
 				this._format.argument.push(arg[i]);
 			}
 			i += 1;
 		}
+		return i;
+	}
+
+	setMax(n) {
+		this._max = Number(n);
 		return this;
 	}
 
 	setMap(a) {
-		if (!(a instanceof Map)) {
-			throw new Error('not a map instance can\'t setup options.');
-		}
 		for (let i in a) {
+			if (!(a[i] instanceof Map)) {
+				throw new Error('not a map instance can\'t setup options.');
+			}
 			let v = a[i].value();
 			for (let x in v.alias) {
 				if (this._map[v.alias[x]]) {

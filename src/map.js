@@ -3,7 +3,7 @@ class Map {
 
 	constructor(key) {
 		this._key = key;
-		this._noArgument = false;
+		this._noArgument = true;
 	}
 
 	value() {
@@ -19,13 +19,13 @@ class Map {
 		return this;
 	}
 
-	noArgument() {
-		this._noArgument = true;
+	argument() {
+		this._noArgument = false;
 		return this;
 	}
 
-	noArg() {
-		return this.noArgument();
+	arg() {
+		return this.argument();
 	}
 
 }

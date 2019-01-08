@@ -3,11 +3,11 @@ const {Cli, Map} = require('./index.js');
 
 let cli = new Cli(process.argv, [
 		new Map('help')
-			.alias(['h', 'H'])
-			.noArgument(),
+			.alias(['h', 'H']),
 		new Map('port')
 			.alias(['p', 'P'])
-	]), arg = null;
+			.argument()
+	], 1), arg = null;
 
 console.log(cli);
 
