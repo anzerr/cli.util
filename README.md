@@ -4,7 +4,7 @@ This is a util to help create cli commands in node
 
 #### `Install`
 ``` bash
-npm install --save git+http://git@github.com/anzerr/cli.util.git
+npm install --save git+https://git@github.com/anzerr/cli.util.git
 ```
 
 ### `Example`
