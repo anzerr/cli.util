@@ -8,9 +8,9 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/anzerr/cli.util.git"
+		"url": "git@github.com:anzerr/cli.util.git"
 	},
-	"license": "ISC",
+	"license": "MIT",
 	"author": "anzerr",
 	"main": "index.js",
 	"types": "index.d.ts",
@@ -21,7 +21,7 @@
 		"extends": "eslint-config-basic"
 	},
 	"devDependencies": {
-		"eslint": "^5.10.0",
+		"eslint": "5.11.1",
 		"eslint-config-basic": "git+https://git@github.com/anzerr/eslintrc.git"
 	},
 	"engines": {
