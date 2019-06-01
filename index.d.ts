@@ -12,7 +12,7 @@ declare class Arguments {
 declare namespace cli {
 
 	declare class Cli {
-		public constructor(arg: string[], map: Object<string | string[]>);
+		public constructor(arg: string[], map?: Object<string | string[]>, max?: number);
 
 		public end(): string;
 
