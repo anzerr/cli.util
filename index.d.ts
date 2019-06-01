@@ -11,8 +11,8 @@ declare class Arguments {
 
 declare namespace cli {
 
-	declare class Cli {
-		public constructor(arg: string[], map?: Object<string | string[]>, max?: number);
+	class Cli {
+		public constructor(arg: string[], map?: any[], max?: number);
 
 		public end(): string;
 
@@ -25,7 +25,7 @@ declare namespace cli {
 		public argument(): Arguments;
 	}
 
-	declare class Map {
+	class Map {
 		public constructor(key: string);
 
 		public alias(alias: string[]): Map;
