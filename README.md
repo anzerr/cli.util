@@ -1,5 +1,7 @@
 
 ### `Intro`
+![GitHub Actions status | publish](https://github.com/anzerr/cli.util/workflows/publish/badge.svg)
+
 This is a util to help create cli commands in node
 
 #### `Install`
