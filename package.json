@@ -1,7 +1,12 @@
 {
 	"name": "cli.util",
 	"version": "1.0.7",
-	"keywords": [],
+	"description": "cli commands util",
+	"keywords": [
+		"cli",
+		"nodejs",
+		"util"
+	],
 	"homepage": "https://github.com/anzerr/cli.util#readme",
 	"bugs": {
 		"url": "https://github.com/anzerr/cli.util/issues"
