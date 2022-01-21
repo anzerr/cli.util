@@ -1,6 +1,6 @@
 {
 	"name": "cli.util",
-	"version": "1.0.12",
+	"version": "1.0.13",
 	"description": "cli commands util",
 	"keywords": [
 		"cli",
