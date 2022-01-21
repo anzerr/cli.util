@@ -22,12 +22,7 @@
 	"scripts": {
 		"test": "node example.js"
 	},
-	"eslintConfig": {
-		"extends": "eslint-config-basic"
-	},
-	"devDependencies": {
-		"eslint-config-basic": "git+https://git@github.com/anzerr/eslintrc.git"
-	},
+	"devDependencies": {},
 	"engines": {
 		"node": ">= 0.10.0"
 	}
